@@ -1,26 +1,25 @@
 #pragma once
 #include "headers.h"
 #include "screen.h"
-#include "world.h"
-#include "snake.h"
+#include "gamestate.h"
+#include "inputManager.h"
 
 class Game {
-    Clock gameClock;
-    Time timeElapsed;
+	float frameRate = 60; //Hz
+	Time dt;
+	Clock clock;
+	Screen screen;
+	GameState* currState;
+	InputManager intputManager;
 
-    Snake snake;
-    World world;
-    Screen screen;
-    
-    public:
-        Game();
-        ~Game();
+public:
+	Game();
 
-        bool isOpen();
-        Time getElaspedTime();
+	bool screenOpen();
 
-        void handleInput();
-        void update();
-        void render();
-        void restartClock();
+	void ddt();
+	void update();
+	void render();
+	void handleInput();
+	void setState(GameState*);
 };

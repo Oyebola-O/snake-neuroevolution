@@ -1,16 +1,17 @@
 #include "headers.h"
 #include "game.h"
-#include "nn.h"
 
+Font font;
 
-int main(int argc, char* argv[]){
-    srand(time(nullptr));
-    Game game;
+int main(int argc, char *argv[]) {
+	if(!font.loadFromFile("font.ttf")) { cerr << "Couldn't load font" << endl; }
+	
+	Game game;
 
-    while(game.isOpen()){
-        game.handleInput();
-        game.update();
-        game.render();
-        game.restartClock();
-    }
+	while (game.screenOpen()) {
+		game.handleInput();
+		game.update();
+		game.render();
+		game.ddt();
+	}
 }

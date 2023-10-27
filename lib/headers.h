@@ -7,3 +7,5 @@
 
 using namespace std;
 using namespace sf;
+
+extern Font font;
